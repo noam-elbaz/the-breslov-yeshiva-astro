@@ -1,16 +1,35 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="The Breslov Yeshiva">
+	<div class="relative isolate">
+		<header class="absolute inset-x-0 top-0 z-50">
+			<nav
+				class="flex items-center justify-between p-6 lg:px-8"
+				aria-label="Global">
+				<div class="flex lg:flex-1">
+					<a href="/" class="-m-1.5 p-1.5">
+						<span class="sr-only">The Breslov Yeshiva Logo</span>
+						<img class="h-16 w-auto" src="logo-white.png" alt="" />
+					</a>
+				</div>
+				<div class="flex lg:flex-1 lg:justify-end">
+					<a
+						href="/#register"
+						class="text-sm font-semibold leading-6 text-white py-1.5 px-3.5 rounded-xl bg-white/20 hover:bg-white/30">
+						Register Now <span aria-hidden="true">→</span>
+					</a>
+				</div>
+			</nav>
+		</header>
+
+		<main>
+			<!-- Your main content here -->
+		</main>
+
+		<footer>
+			<!-- Your footer content here -->
+		</footer>
+	</div>
+</Layout>
