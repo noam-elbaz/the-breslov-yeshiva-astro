@@ -1,0 +1,117 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// This could come from a CMS or API in a real application
+const podcastEpisodes = [
+  {
+    id: 1,
+    title: "Introduction to Breslov Teachings",
+    description:
+      "In this episode, we explore the foundational teachings of Rebbe Nachman of Breslov.",
+    audioSrc: "/podcasts/episode1.mp3",
+  },
+  {
+    id: 2,
+    title: "The Power of Hitbodedut",
+    description:
+      "Learn about the transformative practice of personal prayer and meditation in Breslov tradition.",
+    audioSrc: "/podcasts/episode2.mp3",
+  },
+  {
+    id: 3,
+    title: "Finding Joy in Serving Hashem",
+    description:
+      "Discover Rebbe Nachman's insights on maintaining joy and enthusiasm in our spiritual lives.",
+    audioSrc: "/podcasts/episode3.mp3",
+  },
+];
+
+---
+
+<Layout title="Listen to Our Podcasts | The Breslov Yeshiva">
+  <div class="py-24 sm:py-32">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto max-w-2xl lg:mx-0">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+          >Listen to Our Podcasts</h2
+        >
+        <p class="mt-2 text-lg leading-8 text-gray-600"
+          >Explore the teachings of Rebbe Nachman through our podcast series.</p
+        >
+      </div>
+      <div
+        class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-1">
+        {
+          podcastEpisodes.length > 0 ? (
+            podcastEpisodes.map((episode) => (
+              <article
+                class="flex max-w-xl flex-col items-start justify-between">
+                <div class="flex items-center gap-x-4 text-xs">
+                  <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+                    {episode.title}
+                  </h3>
+                </div>
+                <div class="group relative">
+                  <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
+                    {episode.description}
+                  </p>
+                </div>
+                <div class="mt-4 w-full">
+                  <audio controls class="w-full">
+                    <source src={episode.audioSrc} type="audio/mpeg" />
+                    Your browser does not support the audio element.
+                  </audio>
+                </div>
+              </article>
+            ))
+          ) : (
+            <p>No episodes available at the moment.</p>
+          )
+        }
+      </div>
+    </div>
+  </div>
+  <div
+    class="absolute inset-x-0 -top-72 -z-10 flex transform-gpu justify-center overflow-hidden blur-3xl"
+    aria-hidden="true">
+    <div
+      class="aspect-[1318/752] w-[82.375rem] flex-none bg-gradient-to-r from-[#80caff] to-[#4f46e5] opacity-25"
+      style="
+                clip-path: polygon(
+                  73.6% 51.7%,
+                  91.7% 11.8%,
+                  100% 46.4%,
+                  97.4% 82.2%,
+                  92.5% 84.9%,
+                  75.7% 64%,
+                  55.3% 47.5%,
+                  46.5% 49.4%,
+                  45% 62.9%,
+                  50.3% 87.2%,
+                  21.3% 64.1%,
+                  0.1% 100%,
+                  5.4% 51.1%,
+                  21.4% 63.9%,
+                  58.9% 0.2%,
+                  73.6% 51.7%
+                );
+              "
+    ></div>
+  </div>
+</Layout>
+
+<script>
+  // This script will pause other audio players when a new one starts playing
+  document.addEventListener(
+    "play",
+    function (e) {
+      var audios = document.getElementsByTagName("audio");
+      for (var i = 0, len = audios.length; i < len; i++) {
+        if (audios[i] != e.target) {
+          audios[i].pause();
+        }
+      }
+    },
+    true,
+  );
+</script>
